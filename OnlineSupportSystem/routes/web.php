@@ -1,6 +1,11 @@
 <?php
 
+use App\Http\Controllers\ProblemController;
+use App\Http\Controllers\ViewController;
+use App\Http\Controllers\website;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use App\Mail\ProblemEmail;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +18,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Auth::routes();
+
+Route::get('/', [ViewController::class, 'all'])->name('all');
+Route::get('/home', [ViewController::class, 'index'])->name('home');
+
+Route::post('/post/store', [ProblemController::class, "store"])->name('post.store');
+
+Route::get('/getproblem/{prob_id}', [ProblemController::class, "getproblem"]);
+
+Route::post('/update/answer', [ProblemController::class, "updateanswer"])->name('update.answer');
+
+Route::get('/email', [website::class, 'index'])->name('website');
+Route::get('problem-email', function () {
+   Mail::to('fake@mail.com')->send(new ProblemEmail());
+    return "mail sent";
 });
