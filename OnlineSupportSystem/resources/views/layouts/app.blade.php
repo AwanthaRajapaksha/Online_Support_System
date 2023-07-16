@@ -9,6 +9,9 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
@@ -24,28 +27,74 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<style>
-section{
-  width: 70%;
-  margin: 30px auto;
-}
-#userTable th, #userTable td{
-  border: 1px solid #ccc;
-  text-align: left;
-}
-#userTable thead {
-  background: #f2f2f2;
-}
+    <style>
+    section{
+    width:100%;
+    background-color: rgb(229, 223, 223) 220);
+    }
+    #userTable th, #userTable td{
+    border: 1px solid #ccc;
+    text-align: left;
+    }
+    #userTable thead {
+    background: #f2f2f2;
+    }
 
-.yellow { background-color: #ffff00 }
-.red { background-color: #ff0000 }
-</style>
+    .yellow { background-color: #ffff00 }
+    .red { background-color: #ff0000 }
+    @media only screen and (max-width: 990px) {
+
+       #UserProblem{
+            display: none;
+        }
+       #UserProblem2{
+            display: none;
+        }
+        #UserPhone{
+            display: none;
+        }
+        #UserPhone2{
+            display: none;
+        }
+      }
+      @media only screen and (max-width: 768px) {
+
+        #UserEmail{
+             display: none;
+         }
+        #UserEmail2{
+             display: none;
+         }
+
+       }
+
+       @media only screen and (max-width: 435px) {
+
+        #UserDate{
+             display: none;
+         }
+        #UserDate2{
+             display: none;
+         }
+
+       }
+       @media only screen and (max-width: 375px) {
+
+        #UserName{
+             display: none;
+         }
+        #UserName2{
+             display: none;
+         }
+
+       }
+    </style>
 
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
+            <div class="container ">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     Online Support System
                 </a>

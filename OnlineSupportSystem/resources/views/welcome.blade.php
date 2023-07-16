@@ -52,35 +52,35 @@
     <div class="row">
        <div class="col">
             <section>
-                <table id="userTable" width="100%">
-                <thead>
-                    <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Problem</th>
-                    <th>Phone Number</th>
-                    <th>Token</th>
-                    <th>Date</th>
-                    <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($problems as $key => $problem)
-
-                        <tr class="status"  value="{{ $problem->answer }}" >
-                        <td>{{ $problem->name }}</td>
-                        <td>{{ $problem->email }}</td>
-                        <td>{{ $problem->problem }}</td>
-                        <td>{{ $problem->phone }}</td>
-                        <td>{{ $problem->token }}</td>
-                        <td>{{ $problem->created_at }}</td>
-                        <td>
-                            <button type="button"  class="ProblemDetails btn btn-success "  value="{{ $problem->id }}" >View</button>
-                        </td>
+                <table id="userTable" >
+                    <thead>
+                        <tr>
+                        <th id="UserName" >Name</th>
+                        <th id="UserEmail">Email</th>
+                        <th id="UserProblem">Problem</th>
+                        <th id="UserPhone">Phone Number</th>
+                        <th id="UserToken">Token</th>
+                        <th id="UserDate">Date</th>
+                        <th id="UserAction">Action</th>
                         </tr>
-                    @endforeach
-                </tbody>
-                </table>
+                    </thead>
+                    <tbody>
+                        @foreach ($problems as $key => $problem)
+
+                            <tr class="status"  value="{{ $problem->answer }}" >
+                            <td id="UserName2">{{ $problem->name }}</td>
+                            <td id="UserEmail2">{{ $problem->email }}</td>
+                            <td id="UserProblem2">{{ $problem->problem }}</td>
+                            <td id="UserPhone2">{{ $problem->phone }}</td>
+                            <td id="UserToken2">{{ $problem->token }}</td>
+                            <td id="UserDate2">{{ $problem->created_at }}</td>
+                            <td id="UserAction2">
+                                <button type="button"  class="ProblemDetails btn btn-success "  value="{{ $problem->id }}" >View</button>
+                            </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                    </table>
             </section>
        </div>
     </div>
@@ -100,7 +100,7 @@
                 <input type="hidden" name="_token" value="{{ csrf_token() }}" id="_token">
                  <div class="mb-3">
                    <label for="recipient-name" class="col-form-label">Name:</label>
-                   <input type="text" name="up_name" class="form-control"  readonly>
+                   <input type="text" name="up_name" class="form-control"  id="up_name" readonly>
                  </div>
                  <div class="mb-3">
                     <label for="recipient-name" class="col-form-label">Email:</label>

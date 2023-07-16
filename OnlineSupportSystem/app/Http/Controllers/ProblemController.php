@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Session;
 
 class ProblemController extends Controller
 {
-
+    // start problem seve
     public function store(Request $request){
         $random = rand();
         Problem::create([
@@ -27,7 +27,9 @@ class ProblemController extends Controller
         return redirect()->back();
         //dd($request);
     }
+    // end problem seve
 
+    // start view problem
     public function getproblem($problem_id){
 
         $problem = Problem::find($problem_id);
@@ -43,14 +45,18 @@ class ProblemController extends Controller
                 ]);
         }
      }
+     // end view problem
 
+     // start Update Answer
      public function updateanswer(Request $request){
 
        $problem = Problem::find($request->up_problrm_id);
         $problem->answer = $request->up_answer;
         $problem->save();
+        Session::flash('success', 'Answer saved successfully');
         return redirect()->back();
         //dd($request);
 
      }
+     // end Update Answer
 }

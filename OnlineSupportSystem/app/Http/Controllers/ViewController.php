@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class ViewController extends Controller
 {
+    // start veiw all problems
     public function index(){
 
         $problems = Problem::all();
@@ -14,7 +15,9 @@ class ViewController extends Controller
         //dd($request);
 
     }
+     // end veiw all problems
 
+    // start veiw all problems
     public function all(){
 
         $problems = Problem::all();
@@ -22,6 +25,6 @@ class ViewController extends Controller
         //dd($request);
 
     }
-
+     // start veiw all problems
 
 }

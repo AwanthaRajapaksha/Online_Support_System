@@ -3,6 +3,11 @@
 @section('content')
 
 <div class="container">
+    @if(Session::has('success'))
+        <div class="alert alert-success">
+            {{ Session::get('success') }}
+        </div>
+    @endif
     <div>
         <h1 style="text-align: center;" >All Problems Details</h1>
         <p style="text-align: center;color:red;" >The red Problems have not been answered yet</p>
@@ -10,29 +15,29 @@
     <div class="row">
        <div class="col">
             <section>
-                <table id="userTable" width="100%">
+                <table id="userTable" >
                 <thead>
                     <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Problem</th>
-                    <th>Phone Number</th>
-                    <th>Token</th>
-                    <th>Date</th>
-                    <th>Action</th>
+                    <th id="UserName" >Name</th>
+                    <th id="UserEmail">Email</th>
+                    <th id="UserProblem">Problem</th>
+                    <th id="UserPhone">Phone Number</th>
+                    <th id="UserToken">Token</th>
+                    <th id="UserDate">Date</th>
+                    <th id="UserAction">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($problems as $key => $problem)
 
                         <tr class="status"  value="{{ $problem->answer }}" >
-                        <td>{{ $problem->name }}</td>
-                        <td>{{ $problem->email }}</td>
-                        <td>{{ $problem->problem }}</td>
-                        <td>{{ $problem->phone }}</td>
-                        <td>{{ $problem->token }}</td>
-                        <td>{{ $problem->created_at }}</td>
-                        <td>
+                        <td id="UserName2">{{ $problem->name }}</td>
+                        <td id="UserEmail2">{{ $problem->email }}</td>
+                        <td id="UserProblem2">{{ $problem->problem }}</td>
+                        <td id="UserPhone2">{{ $problem->phone }}</td>
+                        <td id="UserToken2">{{ $problem->token }}</td>
+                        <td id="UserDate2">{{ $problem->created_at }}</td>
+                        <td id="UserAction2">
                             <button type="button"  class="ProblemDetails btn btn-success "  value="{{ $problem->id }}" >View</button>
                         </td>
                         </tr>
@@ -124,6 +129,7 @@
                     $('#up_email').val(data.problem.email);
                     $('#up_phone').val(data.problem.phone);
                     $('#up_problem').val(data.problem.problem);
+                    $('#up_answer').val(data.problem.answer);
                    // console.log(data.problem);
                    localStorage.setItem("problemid", data.problem.id);
                 },
