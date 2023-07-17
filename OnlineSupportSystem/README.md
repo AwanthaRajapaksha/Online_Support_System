@@ -19,3 +19,4 @@ After the register button you are allowed to login after creating an admin accou
 **I used to Ajax becouse minimize the number of page loads required while using the system 
 **I validated all inputs and appropriate validation and status messages shown when necessary
 **I used random() to guess the ticket references.
+**I used the mailtrap sefe email testing site to run the email function. Because there was an error in my email.

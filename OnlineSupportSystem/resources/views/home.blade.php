@@ -78,7 +78,7 @@
                  </div>
                  <div class="mb-3">
                      <label for="message-text" class="col-form-label">Answer</label>
-                     <textarea class="form-control" name="up_answer" id="up_answer" required></textarea>
+                     <textarea class="form-control" name="up_answer" id="" required></textarea>
                    </div>
              </div>
              <div class="modal-footer">

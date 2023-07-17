@@ -55,10 +55,7 @@
                 <table id="userTable" >
                     <thead>
                         <tr>
-                        <th id="UserName" >Name</th>
-                        <th id="UserEmail">Email</th>
                         <th id="UserProblem">Problem</th>
-                        <th id="UserPhone">Phone Number</th>
                         <th id="UserToken">Token</th>
                         <th id="UserDate">Date</th>
                         <th id="UserAction">Action</th>
@@ -68,10 +65,7 @@
                         @foreach ($problems as $key => $problem)
 
                             <tr class="status"  value="{{ $problem->answer }}" >
-                            <td id="UserName2">{{ $problem->name }}</td>
-                            <td id="UserEmail2">{{ $problem->email }}</td>
                             <td id="UserProblem2">{{ $problem->problem }}</td>
-                            <td id="UserPhone2">{{ $problem->phone }}</td>
                             <td id="UserToken2">{{ $problem->token }}</td>
                             <td id="UserDate2">{{ $problem->created_at }}</td>
                             <td id="UserAction2">
@@ -151,7 +145,13 @@
                     $('#up_email').val(data.problem.email);
                     $('#up_phone').val(data.problem.phone);
                     $('#up_problem').val(data.problem.problem);
-                    $('#up_answer').val(data.problem.answer);
+
+                    if(data.problem.answer == '0'){
+                        $('#up_answer').val('');
+                    }
+                    else{
+                        $('#up_answer').val(data.problem.answer);
+                    }
                    // console.log(data.problem);
                 },
                 error: function() {

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\ProblemEmail;
+use App\Mail\ProblemSubmited;
 
 class website extends Controller
 {
@@ -12,8 +12,8 @@ class website extends Controller
     {
     $recipientEmail = 'awanthacodewox@gmail.com';
 
-    Mail::to($recipientEmail)->send(new ProblemEmail());
+    Mail::to($recipientEmail)->send(new ProblemSubmited());
 
-    return redirect('welcome');
+    return redirect()->back();
     }
 }
