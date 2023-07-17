@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Problem;
-use Illuminate\Http\Request;
+use  Illuminate\Support\Facades\Auth;
 
 class ViewController extends Controller
 {
@@ -26,5 +27,14 @@ class ViewController extends Controller
 
     }
      // start veiw all problems
+
+    // start veiw all problems
+    public function myticket(){
+
+       $problems = Problem::all();
+        return view('mytickets', compact('problems'));
+
+    }
+     // end veiw all problems
 
 }

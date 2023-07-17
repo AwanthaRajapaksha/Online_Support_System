@@ -22,7 +22,10 @@ use App\Mail\ProblemEmail;
 Auth::routes();
 
 Route::get('/', [ViewController::class, 'all'])->name('all');
+
 Route::get('/home', [ViewController::class, 'index'])->name('home');
+
+Route::get('/myticket', [ViewController::class, 'myticket'])->name('myticket');
 
 Route::post('/post/store', [ProblemController::class, "store"])->name('post.store');
 
@@ -30,8 +33,3 @@ Route::get('/getproblem/{prob_id}', [ProblemController::class, "getproblem"]);
 
 Route::post('/update/answer', [ProblemController::class, "updateanswer"])->name('update.answer');
 
-Route::get('/email', [website::class, 'index'])->name('website');
-Route::get('problem-email', function () {
-   Mail::to('fake@mail.com')->send(new ProblemEmail());
-    return "mail sent";
-});

@@ -7,6 +7,11 @@
             {{ Session::get('success') }}
         </div>
     @endif
+    @if(Session::has('error'))
+    <div class="alert alert-danger">
+        {{ Session::get('error') }}
+    </div>
+    @endif
     <button type="submit" class="btn btn-primary create_ticket ">Create a Titicket</button>
     <div class="modal" tabindex="-1" aria-hidden="true" id="exampleModal">
         <div class="modal-dialog">
@@ -84,7 +89,8 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">Problem Details</h5>
+              <h5 class="modal-title">Problem Details :-  </h5>
+              <label  for="recipient-name" class="col-form-label mt-1"  id="token_number"> </label>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -93,24 +99,24 @@
                 <input type="hidden" name="up_problrm_id" class="form-control" id="up_problem_id">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}" id="_token">
                  <div class="mb-3">
-                   <label for="recipient-name" class="col-form-label">Name:</label>
-                   <input type="text" name="up_name" class="form-control"  id="up_name" readonly>
+                   <label for="left" class="col-form-label">Name :- </label>
+                   <label  for="right" class="col-form-label"  id="up_name"></label>
                  </div>
                  <div class="mb-3">
-                    <label for="recipient-name" class="col-form-label">Email:</label>
-                    <input type="email" name="up_email" class="form-control" id="up_email" readonly>
+                    <label for="left" class="col-form-label">Email :- </label>
+                    <label for="right" class="col-form-label" id="up_email"></label>
                  </div>
                  <div class="mb-3">
-                     <label for="recipient-name" class="col-form-label">Phone Number:</label>
-                     <input type="email" name="up_phone" class="form-control" id="up_phone" readonly>
+                    <label for="left" class="col-form-label">Phone Number :- </label>
+                    <label for="right" class="col-form-label" id="up_phone"></label>
                  </div>
                  <div class="mb-3">
-                   <label for="message-text" class="col-form-label">problem:</label>
-                   <textarea class="form-control" name="up_problem" id="up_problem" readonly></textarea>
+                    <label for="left" class="col-form-label">Problem :- </label>
+                    <label for="right" class="col-form-label" id="up_problem"></label>
                  </div>
                  <div class="mb-3">
-                     <label for="message-text" class="col-form-label">Answer</label>
-                     <textarea class="form-control" name="up_answer" id="up_answer" readonly></textarea>
+                    <label for="left" class="col-form-label">Answer :- </label>
+                    <label for="right" class="col-form-label" id="up_answer"></label>
                 </div>
              </div>
              <div class="modal-footer">
@@ -141,16 +147,19 @@
                 dataType: 'json',
                 success: function(data) {
                     $('#up_problem_id').val(data.problem.id);
-                    $('#up_name').val(data.problem.name);
-                    $('#up_email').val(data.problem.email);
-                    $('#up_phone').val(data.problem.phone);
-                    $('#up_problem').val(data.problem.problem);
+
+                    $('#up_name').html(data.problem.name);
+                    $('#up_name').html(data.problem.name);
+                    $('#up_email').html(data.problem.email);
+                    $('#up_phone').html(data.problem.phone);
+                    $('#up_problem').html(data.problem.problem);
+                    $('#token_number').html(data.problem.token);
 
                     if(data.problem.answer == '0'){
-                        $('#up_answer').val('');
+                        $('#up_answer').html('The Ticket has not yet been reviewed');
                     }
                     else{
-                        $('#up_answer').val(data.problem.answer);
+                        $('#up_answer').html(data.problem.answer);
                     }
                    // console.log(data.problem);
                 },

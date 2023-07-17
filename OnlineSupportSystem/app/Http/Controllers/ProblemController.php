@@ -12,40 +12,41 @@ class ProblemController extends Controller
 {
     // start problem seve
     public function store(Request $request){
-        $random = rand();
-        Problem::create([
 
-            'name' =>$request->name,
-            'email' =>$request->email,
-            'phone'=>$request->phone,
-            'problem'=>$request->problem,
-            'answer'=> 0,
-            'token'=> $random
+        $random ='INC'.rand();
 
-        ]);
+        $problem = new Problem;
+        $problem->name = $request->name;
+        $problem->email = $request->email;
+        $problem->phone = $request->phone;
+        $problem->problem = $request->problem;
+        $problem->answer = '0';
+        $problem->token = $random;
+        $saveSuccess = $problem->save();
 
-        $email_data = [
-            'name' =>$request->name,
-            'email' =>$request->email,
-            'phone'=>$request->phone,
-            'problem'=>$request->problem,
-            'token'=> $random
-        ];
+        if ($saveSuccess) {
 
-        Session::flash('success', 'Problem saved successfully!Your Problem Token Number is: '.$random);
+            Session::flash('success', 'Problem saved successfully!Your Problem Token Number is: '.$random);
 
-        // Mail::send('emailtem',$email_data, function($message) use ($email_data){
-        //     $message->to($email_data['email'])
-        //             ->from($email_data['fromemail'],$email_data['formname'])
-        //             ->subject($email_data['subject']);
-        //     });
+            $email_data = [
+                'name' =>$request->name,
+                'email' =>$request->email,
+                'phone'=>$request->phone,
+                'problem'=>$request->problem,
+                'token'=> $random
+            ];
+            
+            // start email send function
+            $recipientEmail = env('MAIL_FROM_ADDRESS');
+            Mail::to($recipientEmail)->send(new ProblemSubmited($email_data));
 
-        $recipientEmail = 'awanthacodewox@gmail.com';
+            return redirect()->back();
+            //dd($request);
+        } else {
 
-        Mail::to($recipientEmail)->send(new ProblemSubmited($email_data));
+            Session::flash('error', 'Failed to save data.');
+        }
 
-        return redirect()->back();
-        //dd($request);
     }
     // end problem seve
 

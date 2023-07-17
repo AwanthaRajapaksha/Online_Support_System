@@ -29,7 +29,7 @@ class ProblemSubmited extends Mailable
 
     public function build()
     {
-        return $this->view('email.signup');
+        return $this->view('email.emailbody');
     }
 
 
